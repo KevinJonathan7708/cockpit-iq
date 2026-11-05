@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive Cessna 172S takeoff and landing checklist trainer.">
+  <meta name="theme-color" content="#101820">
+  <title>CockpitIQ — Cockpit Trainer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div>
+          <h1>Cockpit<span>IQ</span></h1>
+          <p id="appProfileLabel">Cessna 172S · Generic training profile</p>
+        </div>
+      </div>
+
+      <nav class="tabs" aria-label="Flight procedure">
+        <a id="takeoffBtn" href="trainer.html?procedure=takeoff">Takeoff</a>
+        <a id="landingBtn" href="trainer.html?procedure=landing">Landing</a>
+      </nav>
+
+      <a id="homeBtn" class="home-button" href="index.html">Home</a>
+      <button id="labelsBtn" class="home-button label-button" type="button" aria-pressed="false" aria-label="Show cockpit control labels">Labels</button>
+      <button id="themeBtn" class="theme-toggle" type="button"></button>
+    </header>
+
+    <main class="workspace">
+      <section class="cockpit-stage" tabindex="-1" aria-label="Interactive cockpit">
+        <div class="cockpit-frame">
+          <img src="data/cockpit.jpg" alt="Cessna 172S cockpit instrument panel and controls" class="cockpit-img">
+
+          <button class="hotspot" type="button" style="--x:22.5%; --y:34%;" data-op="speed" data-name="Airspeed" data-info="Simulated airspeed indicator. Set a training value, then confirm it for a checklist step."><span class="tag">Airspeed</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="--x:29%; --y:34%;" data-op="none" data-name="Attitude Indicator" data-info="Compare the miniature aircraft with the horizon bar and cross-check pitch and bank."><span class="tag">Attitude</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="--x:36.5%; --y:34%;" data-op="none" data-name="Altimeter" data-info="Altimeter: altitude above sea level. Set the indicated pressure before flight and cross-check the climb."><span class="tag">Altimeter</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="--x:45.5%; --y:34%;" data-op="nav" data-name="Navigation (VOR)" data-info="VOR indicator. Use the selected navigation source and course information to support situational awareness."><span class="tag">VOR Nav</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="--x:44.5%; --y:62%;" data-op="engine" data-name="Tachometer" data-info="Tachometer (RPM). Check engine indications and verify takeoff power during the roll."><span class="tag">Tachometer</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="--x:57%; --y:32%;" data-op="none" data-name="COM / NAV / GPS Radios" data-info="Radio stack: set the assigned communication and navigation frequencies before taxi."><span class="tag">Radios</span><span class="dot"></span></button>
+          <button class="hotspot transponder-spot" type="button" style="--x:56%; --y:64%;" data-op="xpdr" data-name="Transponder" data-info="Enter the assigned code and select the instructed mode."><span class="tag">Transponder</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="--x:8.5%; --y:47%;" data-op="none" data-name="Fuel Quantity" data-info="Fuel quantity gauges. Confirm enough fuel for the flight plus reserve."><span class="tag">Fuel</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="--x:10.5%; --y:78%;" data-op="none" data-name="Magnetos / Ignition" data-info="Ignition switch: L / R / BOTH / START. Follow the run-up procedure for this aircraft."><span class="tag">Mags</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="--x:14%; --y:78%;" data-op="none" data-name="Master Switch" data-info="Master and alternator switches. Confirm electrical indications as specified by the aircraft checklist."><span class="tag">Master</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="--x:22%; --y:80%;" data-op="lights" data-name="Light Switches" data-info="Select landing and taxi lights as required for the operation."><span class="tag">Lights</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="--x:28.5%; --y:80%;" data-op="strobes" data-name="Strobe / Pitot Heat" data-info="Use exterior lights and pitot heat when conditions and the aircraft checklist call for them."><span class="tag">Strobes</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="--x:51%; --y:77%;" data-op="throttle" data-name="Throttle" data-info="Adjust the simulated throttle with the slider."><span class="tag">Throttle</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="--x:56.5%; --y:77%;" data-op="mixture" data-name="Mixture" data-info="Set mixture for the conditions and aircraft checklist."><span class="tag">Mixture</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="--x:45.5%; --y:90%;" data-op="trim" data-name="Elevator Trim" data-info="Set the simulated elevator trim to the required position."><span class="tag">Trim</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="--x:19%; --y:78%;" data-op="flaps" data-name="Flaps" data-info="Select a simulated flap detent: 0°, 10°, 20°, or 30°."><span class="tag">Flaps</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="--x:30%; --y:64%;" data-op="yoke" data-name="Yoke" data-info="At the rotation step, use the yoke marker once airspeed reaches the profile reference speed. It also confirms climb or flare at those checklist steps."><span class="tag">Yoke</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="--x:10.5%; --y:87%;" data-op="parking-brake" data-name="Parking Brake" data-info="Release the parking brake when ready to taxi."><span class="tag">Park Brake</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="--x:29%; --y:97%;" data-op="pedals" data-name="Rudder Pedals" data-info="Maintain directional control and brake as needed during rollout."><span class="tag">Pedals</span><span class="dot"></span></button>
+
+        </div>
+      </section>
+
+      <div id="infoBox" class="info-toast" role="status" aria-live="polite" aria-atomic="true">
+        <strong id="infoTitle">Cockpit Explorer</strong>
+        <p id="infoText">Select a marker to identify a cockpit control.</p>
+      </div>
+
+      <aside id="controlPanel" class="control-panel" aria-labelledby="controlTitle" hidden>
+        <div class="control-panel-head">
+          <div>
+            <small>SIMULATED CONTROL</small>
+            <h2 id="controlTitle">Control</h2>
+          </div>
+          <button id="controlClose" type="button" aria-label="Close control panel">×</button>
+        </div>
+        <p id="controlDescription" class="control-description"></p>
+        <div id="infoControls" class="info-controls"></div>
+      </aside>
+
+      <section class="dashboard">
+        <section class="kneeboard" aria-label="Checklist">
+          <div class="paper">
+            <div class="paper-head">
+              <h2 id="procedureTitle">Cockpit Explorer</h2>
+              <div class="paper-count"><strong id="progressText" aria-live="polite">—</strong><small>checked</small></div>
+              <button id="boardToggle" class="board-toggle" type="button" aria-expanded="false" aria-controls="boardDetails">
+                <span>Open checklist</span>
+              </button>
+            </div>
+            <div id="boardDetails" class="board-details">
+              <div class="board-details-inner">
+                <p id="procedureLabel" class="paper-kicker">Explore controls and simulated states</p>
+                <section class="sim-readout" aria-label="Simulated aircraft systems">
+                  <div class="sim-readout-head">
+                    <span class="sim-live-dot" aria-hidden="true"></span>
+                    <span>Simulated systems</span>
+                    <strong id="simPhase">Explore</strong>
+                  </div>
+                  <div class="sim-readout-grid">
+                    <div class="sim-readout-cell"><small>Speed</small><strong id="simAirspeed">0 KIAS</strong></div>
+                    <div class="sim-readout-cell"><small>Flaps</small><strong id="simFlaps">0°</strong></div>
+                    <div class="sim-readout-cell"><small>Power</small><strong id="simPower">20%</strong></div>
+                    <div class="sim-readout-cell"><small>Brake</small><strong id="simBrake">Set</strong></div>
+                    <div class="sim-readout-cell"><small>Trim</small><strong id="simTrim">Down</strong></div>
+                    <div class="sim-readout-cell"><small>Mixture</small><strong id="simMixture">Lean</strong></div>
+                    <div class="sim-readout-cell"><small>Lights</small><strong id="simLights">Off</strong></div>
+                    <div class="sim-readout-cell"><small>Strobe</small><strong id="simStrobe">Off</strong></div>
+                    <div class="sim-readout-cell"><small>XPDR</small><strong id="simXpdr">STBY</strong></div>
+                  </div>
+                </section>
+                <div id="procedureTargets" class="procedure-targets" aria-label="Profile reference targets"></div>
+                <div id="checklist" class="paper-lines" role="list" aria-label="Procedure steps"></div>
+                <div class="paper-foot">
+                  <button id="resetBtn" type="button">Restart</button>
+                  <button id="nextBtn" type="button">Show current step ↓</button>
+                </div>
+                <p class="training-note">Abbreviated training sequence only. Use the aircraft POH/AFM checklist and instructor guidance.</p>
+              </div>
+            </div>
+            <div id="paperStamp" class="paper-stamp">COMPLETE ✓</div>
+          </div>
+        </section>
+        <aside id="testPanel" class="test-panel" aria-live="polite" hidden>
+          <p class="test-panel-kicker">TEST MODE</p>
+          <h2 id="testTitle">Takeoff test</h2>
+          <p class="test-panel-intro">Complete the procedure from memory. The checklist is hidden.</p>
+          <div class="test-panel-stats">
+            <div><small>Progress</small><strong id="testProgress">0 / 0</strong></div>
+            <div><small>Mistakes</small><strong id="testMistakes">0 / 3</strong></div>
+          </div>
+          <div class="test-progress-track" aria-hidden="true"><span id="testProgressBar"></span></div>
+          <p id="testMessage" class="test-message">Use the cockpit controls to complete each action in order.</p>
+          <button id="testRestart" class="test-restart" type="button">Restart test</button>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="testResultDialog" class="test-result-dialog" aria-labelledby="testResultTitle" aria-describedby="testResultDescription">
+    <div class="test-result-graphic" aria-hidden="true">
+      <svg viewBox="0 0 48 48" focusable="false">
+        <circle cx="24" cy="24" r="22"></circle>
+        <path id="testResultIconPath" d="M13 24l7 7 15-16"></path>
+      </svg>
+    </div>
+    <p id="testResultLabel" class="test-result-label">TEST COMPLETE</p>
+    <h2 id="testResultTitle">Awesome job!</h2>
+    <p id="testResultDescription" class="test-result-description">You finished the procedure with zero mistakes.</p>
+    <p class="test-result-score">Mistakes <strong id="testResultScore">0 / 3</strong></p>
+    <div class="test-result-actions">
+      <button id="testResultRestart" type="button">Restart test</button>
+      <a href="index.html">Home</a>
+    </div>
+  </dialog>
+
+  <script src="data/procedures.js"></script>
+  <script src="theme.js"></script>
+  <script src="script.js"></script>
+  <script src="chatbot.js"></script>
+</body>
+</html>

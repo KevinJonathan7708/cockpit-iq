@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Choose a takeoff or landing checklist, or explore the Cessna 172S cockpit.">
+  <title>CockpitIQ — Procedure Trainer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="homeScreen" class="home-screen">
+    <header class="home-header">
+      <a class="home-brand" href="index.html">
+        <strong>CockpitIQ</strong>
+        <small>Cessna 172S procedure trainer</small>
+      </a>
+      <button id="themeBtn" class="theme-toggle" type="button"></button>
+    </header>
+
+    <div class="home-content">
+      <section class="home-hero">
+        <h1 id="homeTitle">Choose a procedure</h1>
+        <p class="home-intro">Practice with a checklist, explore the panel, or test yourself.</p>
+      </section>
+
+      <nav class="activity-list" aria-label="Training activities">
+        <a class="activity-row" href="trainer.html?procedure=takeoff">
+          <strong>Takeoff</strong><small>Before takeoff, roll, and climb</small>
+        </a>
+        <a class="activity-row" href="trainer.html?procedure=landing">
+          <strong>Landing</strong><small>Approach, touchdown, and runway exit</small>
+        </a>
+        <a class="activity-row" href="trainer.html?procedure=explore">
+          <strong>Explore the cockpit</strong><small>Identify and adjust simulated controls</small>
+        </a>
+      </nav>
+
+      <section class="home-test" aria-labelledby="testHeading">
+        <div>
+          <h2 id="testHeading">Test yourself</h2>
+          <p>Run a procedure without the checklist.</p>
+        </div>
+        <div class="home-test-links">
+          <a href="trainer.html?procedure=takeoff&amp;mode=test">Takeoff test</a>
+          <a href="trainer.html?procedure=landing&amp;mode=test">Landing test</a>
+        </div>
+      </section>
+
+      <section class="profile-note" aria-labelledby="profileTitle">
+        <p class="profile-note-kicker">Aircraft profile</p>
+        <h2 id="profileTitle">Generic Cessna 172S profile</h2>
+        <p id="profileDescription">Reference values are examples. Have an instructor review the profile before using it for a specific aircraft.</p>
+      </section>
+
+      <p class="home-footer">Abbreviated educational trainer only. Verify procedures against the aircraft’s approved instructor guidance.</p>
+    </div>
+  </main>
+  <script src="data/procedures.js"></script>
+  <script>
+    const profile = window.CockpitProfiles?.profile;
+    if (profile) {
+      document.getElementById("profileTitle").textContent = `${profile.aircraft} · ${profile.configuration}`;
+      document.getElementById("profileDescription").textContent = profile.sourceNote;
+    }
+  </script>
+  <script src="theme.js"></script>
+  <script src="chatbot.js"></script>
+</body>
+</html>
