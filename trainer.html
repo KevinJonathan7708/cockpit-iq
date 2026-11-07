@@ -14,7 +14,7 @@
     <header class="topbar">
       <div class="brand">
         <div>
-          <h1>Cockpit<span>IQ</span></h1>
+          <h1><a id="home" href="index.html">Cockpit<span>IQ</span></a></h1>
           <p id="appProfileLabel">Cessna 172S · Generic training profile</p>
         </div>
       </div>
@@ -24,7 +24,6 @@
         <a id="landingBtn" href="trainer.html?procedure=landing">Landing</a>
       </nav>
 
-      <a id="homeBtn" class="home-button" href="index.html">Home</a>
       <button id="labelsBtn" class="home-button label-button" type="button" aria-pressed="false" aria-label="Show cockpit control labels">Labels</button>
       <button id="themeBtn" class="theme-toggle" type="button"></button>
     </header>
@@ -34,25 +33,25 @@
         <div class="cockpit-frame">
           <img src="data/cockpit.jpg" alt="Cessna 172S cockpit instrument panel and controls" class="cockpit-img">
 
-          <button class="hotspot" type="button" style="--x:22.5%; --y:34%;" data-op="speed" data-name="Airspeed" data-info="Simulated airspeed indicator. Set a training value, then confirm it for a checklist step."><span class="tag">Airspeed</span><span class="dot"></span></button>
-          <button class="hotspot" type="button" style="--x:29%; --y:34%;" data-op="none" data-name="Attitude Indicator" data-info="Compare the miniature aircraft with the horizon bar and cross-check pitch and bank."><span class="tag">Attitude</span><span class="dot"></span></button>
-          <button class="hotspot" type="button" style="--x:36.5%; --y:34%;" data-op="none" data-name="Altimeter" data-info="Altimeter: altitude above sea level. Set the indicated pressure before flight and cross-check the climb."><span class="tag">Altimeter</span><span class="dot"></span></button>
-          <button class="hotspot" type="button" style="--x:45.5%; --y:34%;" data-op="nav" data-name="Navigation (VOR)" data-info="VOR indicator. Use the selected navigation source and course information to support situational awareness."><span class="tag">VOR Nav</span><span class="dot"></span></button>
-          <button class="hotspot" type="button" style="--x:44.5%; --y:62%;" data-op="engine" data-name="Tachometer" data-info="Tachometer (RPM). Check engine indications and verify takeoff power during the roll."><span class="tag">Tachometer</span><span class="dot"></span></button>
-          <button class="hotspot" type="button" style="--x:57%; --y:32%;" data-op="none" data-name="COM / NAV / GPS Radios" data-info="Radio stack: set the assigned communication and navigation frequencies before taxi."><span class="tag">Radios</span><span class="dot"></span></button>
-          <button class="hotspot transponder-spot" type="button" style="--x:56%; --y:64%;" data-op="xpdr" data-name="Transponder" data-info="Enter the assigned code and select the instructed mode."><span class="tag">Transponder</span><span class="dot"></span></button>
-          <button class="hotspot" type="button" style="--x:8.5%; --y:47%;" data-op="none" data-name="Fuel Quantity" data-info="Fuel quantity gauges. Confirm enough fuel for the flight plus reserve."><span class="tag">Fuel</span><span class="dot"></span></button>
-          <button class="hotspot" type="button" style="--x:10.5%; --y:78%;" data-op="none" data-name="Magnetos / Ignition" data-info="Ignition switch: L / R / BOTH / START. Follow the run-up procedure for this aircraft."><span class="tag">Mags</span><span class="dot"></span></button>
-          <button class="hotspot" type="button" style="--x:14%; --y:78%;" data-op="none" data-name="Master Switch" data-info="Master and alternator switches. Confirm electrical indications as specified by the aircraft checklist."><span class="tag">Master</span><span class="dot"></span></button>
-          <button class="hotspot" type="button" style="--x:22%; --y:80%;" data-op="lights" data-name="Light Switches" data-info="Select landing and taxi lights as required for the operation."><span class="tag">Lights</span><span class="dot"></span></button>
-          <button class="hotspot" type="button" style="--x:28.5%; --y:80%;" data-op="strobes" data-name="Strobe / Pitot Heat" data-info="Use exterior lights and pitot heat when conditions and the aircraft checklist call for them."><span class="tag">Strobes</span><span class="dot"></span></button>
-          <button class="hotspot" type="button" style="--x:51%; --y:77%;" data-op="throttle" data-name="Throttle" data-info="Adjust the simulated throttle with the slider."><span class="tag">Throttle</span><span class="dot"></span></button>
-          <button class="hotspot" type="button" style="--x:56.5%; --y:77%;" data-op="mixture" data-name="Mixture" data-info="Set mixture for the conditions and aircraft checklist."><span class="tag">Mixture</span><span class="dot"></span></button>
-          <button class="hotspot" type="button" style="--x:45.5%; --y:90%;" data-op="trim" data-name="Elevator Trim" data-info="Set the simulated elevator trim to the required position."><span class="tag">Trim</span><span class="dot"></span></button>
-          <button class="hotspot" type="button" style="--x:19%; --y:78%;" data-op="flaps" data-name="Flaps" data-info="Select a simulated flap detent: 0°, 10°, 20°, or 30°."><span class="tag">Flaps</span><span class="dot"></span></button>
-          <button class="hotspot" type="button" style="--x:30%; --y:64%;" data-op="yoke" data-name="Yoke" data-info="At the rotation step, use the yoke marker once airspeed reaches the profile reference speed. It also confirms climb or flare at those checklist steps."><span class="tag">Yoke</span><span class="dot"></span></button>
-          <button class="hotspot" type="button" style="--x:10.5%; --y:87%;" data-op="parking-brake" data-name="Parking Brake" data-info="Release the parking brake when ready to taxi."><span class="tag">Park Brake</span><span class="dot"></span></button>
-          <button class="hotspot" type="button" style="--x:29%; --y:97%;" data-op="pedals" data-name="Rudder Pedals" data-info="Maintain directional control and brake as needed during rollout."><span class="tag">Pedals</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:22.5%; top:34%;" data-op="speed" data-name="Airspeed" data-info="Simulated airspeed indicator. Set a training value, then confirm it for a checklist step."><span class="tag">Airspeed</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:29%; top:34%;" data-op="none" data-name="Attitude Indicator" data-info="Compare the miniature aircraft with the horizon bar and cross-check pitch and bank."><span class="tag">Attitude</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:36.5%; top:34%;" data-op="none" data-name="Altimeter" data-info="Altimeter: altitude above sea level. Set the indicated pressure before flight and cross-check the climb."><span class="tag">Altimeter</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:45.5%; top:34%;" data-op="nav" data-name="Navigation (VOR)" data-info="VOR indicator. Use the selected navigation source and course information to support situational awareness."><span class="tag">VOR Nav</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:44.5%; top:62%;" data-op="engine" data-name="Tachometer" data-info="Tachometer (RPM). Check engine indications and verify takeoff power during the roll."><span class="tag">Tachometer</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:57%; top:32%;" data-op="none" data-name="COM / NAV / GPS Radios" data-info="Radio stack: set the assigned communication and navigation frequencies before taxi."><span class="tag">Radios</span><span class="dot"></span></button>
+          <button class="hotspot transponder-spot" type="button" style="left:56%; top:64%;" data-op="xpdr" data-name="Transponder" data-info="Enter the assigned code and select the instructed mode."><span class="tag">Transponder</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:8.5%; top:47%;" data-op="none" data-name="Fuel Quantity" data-info="Fuel quantity gauges. Confirm enough fuel for the flight plus reserve."><span class="tag">Fuel</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:10.5%; top:78%;" data-op="none" data-name="Magnetos / Ignition" data-info="Ignition switch: L / R / BOTH / START. Follow the run-up procedure for this aircraft."><span class="tag">Mags</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:14%; top:78%;" data-op="none" data-name="Master Switch" data-info="Master and alternator switches. Confirm electrical indications as specified by the aircraft checklist."><span class="tag">Master</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:22%; top:80%;" data-op="lights" data-name="Light Switches" data-info="Select landing and taxi lights as required for the operation."><span class="tag">Lights</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:28.5%; top:80%;" data-op="strobes" data-name="Strobe / Pitot Heat" data-info="Use exterior lights and pitot heat when conditions and the aircraft checklist call for them."><span class="tag">Strobes</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:51%; top:77%;" data-op="throttle" data-name="Throttle" data-info="Adjust the simulated throttle with the slider."><span class="tag">Throttle</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:56.5%; top:77%;" data-op="mixture" data-name="Mixture" data-info="Set mixture for the conditions and aircraft checklist."><span class="tag">Mixture</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:45.5%; top:90%;" data-op="trim" data-name="Elevator Trim" data-info="Set the simulated elevator trim to the required position."><span class="tag">Trim</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:19%; top:78%;" data-op="flaps" data-name="Flaps" data-info="Select a simulated flap detent: 0°, 10°, 20°, or 30°."><span class="tag">Flaps</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:30%; top:64%;" data-op="yoke" data-name="Yoke" data-info="At the rotation step, use the yoke marker once airspeed reaches the profile reference speed. It also confirms climb or flare at those checklist steps."><span class="tag">Yoke</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:10.5%; top:87%;" data-op="parking-brake" data-name="Parking Brake" data-info="Release the parking brake when ready to taxi."><span class="tag">Park Brake</span><span class="dot"></span></button>
+          <button class="hotspot" type="button" style="left:29%; top:97%;" data-op="pedals" data-name="Rudder Pedals" data-info="Maintain directional control and brake as needed during rollout."><span class="tag">Pedals</span><span class="dot"></span></button>
 
         </div>
       </section>
@@ -154,5 +153,6 @@
   <script src="theme.js"></script>
   <script src="script.js"></script>
   <script src="chatbot.js"></script>
+  <script src="leave.js"></script>
 </body>
 </html>
