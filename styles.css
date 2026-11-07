@@ -1,322 +1,129 @@
-/* CockpitIQ - styles
-   Colours here are the DARK mode ones.
-   theme.js changes them when you switch to light mode. */
-
-body {
-  margin: 0;
-  overflow: hidden;
-  background-color: #161513;
-  color: #ece8df;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-}
-
+body { margin: 0px; overflow: hidden; background-color: #161513; color: #ece8df; font-family: Arial, sans-serif; font-size: 14px; }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-h1, h2, p { margin: 0; }
+h1, h2, p { margin: 0px; }
 small { color: gray; }
 button { font: inherit; color: inherit; }
 
-/* ---------- buttons ---------- */
 .tabs a, .home-button, .theme-toggle, .board-toggle, .paper-foot button,
 .test-restart, .control-button, .chatbot-question, .chatbot-launcher,
-.test-result-actions button, .test-result-actions a,
-.control-panel-head button, .chatbot-close {
-  display: inline-block;
-  padding: 8px 12px;
-  border: 1px solid #777;
-  border-radius: 4px;
-  background-color: transparent;
-  color: inherit;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
+.test-result-actions button, .test-result-actions a, .control-panel-head button, .chatbot-close {
+  display: inline-block; padding: 8px 12px; border: 1px solid #777; border-radius: 4px;
+  background-color: transparent; color: inherit; text-align: center; text-decoration: none; cursor: pointer;
 }
 .tabs a:hover, .home-button:hover, .theme-toggle:hover, .board-toggle:hover,
-.paper-foot button:hover, .test-restart:hover, .control-button:hover,
-.chatbot-question:hover {
-  border-color: #4a6fc0;
-}
-/* blue buttons (selected tab, Labels when on, Ask CockpitIQ) */
-.tabs a.active, [aria-pressed="true"], .chatbot-launcher {
-  background-color: #2c4272;
-  color: white;
-  border-color: #2c4272;
-  font-weight: bold;
-}
+.paper-foot button:hover, .test-restart:hover, .control-button:hover, .chatbot-question:hover { border-color: #4a6fc0; }
+.tabs a.active, [aria-pressed="true"], .chatbot-launcher { background-color: #2c4272; color: white; border-color: #2c4272; font-weight: bold; }
 button:disabled { opacity: 0.5; }
 
-/* ---------- boxes (theme.js colours the background) ---------- */
 .kneeboard, .test-panel, .control-panel, .info-toast, .chatbot-panel,
-.profile-note, .home-test, .test-result-dialog {
-  border: 1px solid #777;
-  border-radius: 4px;
-  background-color: #201e1b;
-  color: inherit;
-}
-
-/* ---------- top bar ---------- */
-.topbar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 64px;
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0 16px;
-  background-color: #201e1b;
-  border-bottom: 1px solid #777;
-}
+.profile-note, .home-test, .test-result-dialog { border: 1px solid #777; border-radius: 4px; background-color: #201e1b; color: inherit; }
+.topbar { position: fixed; top: 0px; right: 0px; left: 0px; z-index: 50; display: flex; align-items: center; gap: 10px; height: 64px; padding: 0px 16px; border-bottom: 1px solid #777; background-color: #201e1b; }
 .brand { flex: 1; }
 .brand h1 { font-size: 22px; }
 .brand h1 span { color: #4a6fc0; }
-.brand h1 a { color: inherit; text-decoration: none; cursor: pointer; }
+.brand h1 a { color: inherit; text-decoration: none; }
 .brand p { color: gray; font-size: 12px; }
 .tabs { display: flex; gap: 6px; }
 
-/* ---------- cockpit picture ---------- */
-.cockpit-stage {
-  position: fixed;
-  top: 64px; left: 0; right: 0; bottom: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: black;
-}
-.cockpit-frame {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  width: min(100vw, calc((100vh - 64px) * 16 / 9));
-}
-.cockpit-img { width: 100%; height: 100%; display: block; }
+.cockpit-stage { position: fixed; top: 64px; right: 0px; bottom: 0px; left: 0px; z-index: 1; display: flex; align-items: center; justify-content: center; background-color: black; }
+.cockpit-frame { position: relative; width: 960px; height: 540px; }
+.cockpit-img { display: block; }
+.hotspot { position: absolute; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 34px; min-height: 34px; padding: 3px; border: 0px; background-color: transparent; cursor: pointer; }
+.hotspot .dot { width: 12px; height: 12px; border: 2px solid white; border-radius: 6px; background-color: #2c4272; }
+.hotspot .tag { padding: 3px 7px; border: 1px solid #2c4272; border-radius: 4px; background-color: #161513; color: inherit; font-size: 11px; white-space: nowrap; opacity: 0; pointer-events: none; }
+.hotspot:hover .tag, .hotspot:focus .tag, body.show-hotspot-labels .tag, .transponder-spot .tag { opacity: 1; }
+.hotspot.info-only .dot { border-color: #2c4272; background-color: white; }
+.transponder-spot .dot { width: 16px; height: 16px; border-radius: 8px; }
+.marker-kind { margin-left: 4px; font-size: 9px; }
 
-/* the dots on the cockpit (left and top are set in trainer.html) */
-.hotspot {
-  position: absolute;
-  transform: translate(-50%, -100%);
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  padding: 3px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-.hotspot .dot {
-  width: 12px; height: 12px;
-  border: 2px solid white;
-  border-radius: 50%;
-  background-color: #2c4272;
-}
-.hotspot .tag {
-  padding: 3px 7px;
-  border: 1px solid #2c4272;
-  border-radius: 4px;
-  background-color: #161513;
-  color: inherit;
-  font-size: 11px;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-}
-.hotspot:hover .tag, .hotspot:focus .tag, body.show-hotspot-labels .tag,
-.transponder-spot .tag {
-  opacity: 1;
-}
-.hotspot.info-only .dot { background-color: white; border-color: #2c4272; }
-.transponder-spot .dot { width: 16px; height: 16px; }
-
-/* ---------- popup message + control panel ---------- */
-.info-toast {
-  position: fixed;
-  top: 76px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 45;
-  width: min(420px, 94vw);
-  padding: 10px 14px;
-  opacity: 0;
-  pointer-events: none;
-}
+.info-toast { position: fixed; top: 76px; right: 0px; left: 0px; z-index: 45; width: 420px; margin: 0px auto; padding: 10px 14px; opacity: 0; pointer-events: none; }
 .info-toast.show { opacity: 1; }
 .info-toast p { margin-top: 4px; color: gray; }
-
-.control-panel {
-  position: fixed;
-  top: 76px;
-  right: 14px;
-  z-index: 45;
-  width: min(320px, 94vw);
-  padding: 14px;
-}
+.control-panel { position: fixed; top: 76px; right: 14px; z-index: 45; width: 320px; padding: 14px; }
 .control-panel-head { display: flex; justify-content: space-between; }
 .control-panel-head h2 { font-size: 18px; }
-.control-description, .control-hint, .control-feedback {
-  margin-top: 8px;
-  color: gray;
-  font-size: 13px;
-}
+.control-description, .control-hint, .control-feedback { margin-top: 8px; color: gray; font-size: 13px; }
 .control-field { margin-top: 14px; }
 .control-field-label { display: flex; justify-content: space-between; }
-.control-field input, .control-field select, .control-panel .control-button {
-  width: 100%;
-  margin-top: 6px;
-}
-.control-field select, .control-field input[type="text"] {
-  padding: 8px;
-  border: 1px solid #777;
-  background-color: transparent;
-  color: inherit;
-}
+.control-field input, .control-field select, .control-panel .control-button { width: 260px; margin-top: 6px; }
+.control-field select, .control-field input[type="text"] { padding: 8px; border: 1px solid #777; background-color: transparent; color: inherit; }
 .control-field option { background-color: #333; color: white; }
 
-/* ---------- checklist (kneeboard) ---------- */
-.dashboard {
-  position: fixed;
-  right: 14px;
-  bottom: 14px;
-  z-index: 40;
-  width: min(380px, 94vw);
-}
+.dashboard { position: fixed; right: 14px; bottom: 14px; z-index: 40; width: 380px; max-height: 700px; overflow-y: auto; }
 .paper { position: relative; padding: 14px; }
 .paper-head { display: flex; align-items: center; gap: 10px; }
 .paper-head h2 { flex: 1; font-size: 17px; }
 .paper-count { text-align: center; }
-.paper-count strong, .sim-readout-cell strong, .test-panel-stats strong {
-  display: block;
-  font-family: monospace;
-}
+.paper-count strong, .sim-readout-cell strong, .test-panel-stats strong { display: block; font-family: monospace; }
 .board-details { display: none; margin-top: 12px; }
 .kneeboard.expanded .board-details { display: block; }
-
 .paper-kicker, .training-note { color: gray; font-size: 12px; }
-.sim-readout { margin: 10px 0; padding: 8px; border: 1px solid #777; }
+.sim-readout { margin: 10px 0px; padding: 8px; border: 1px solid #777; }
 .sim-readout-head { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 12px; }
-.sim-live-dot { display: none; }
-.sim-readout-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+.sim-readout-grid { display: grid; grid-template-columns: 85px 85px 85px; gap: 6px; }
 .sim-readout-cell small { font-size: 11px; }
 .sim-readout-cell .is-set { color: #3a9d4a; }
-
 .procedure-targets { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
 .target-chip { padding: 4px 8px; border: 1px solid #777; font-size: 12px; }
 .target-chip small { margin-right: 6px; }
-
 .paper-lines { max-height: 260px; overflow-y: auto; }
-.check-item {
-  display: flex;
-  gap: 10px;
-  padding: 8px 6px;
-  border-bottom: 1px dashed #777;
-  border-left: 3px solid transparent;
-}
+.check-item { display: flex; gap: 10px; padding: 8px 6px; border-bottom: 1px dashed #777; border-left: 3px solid transparent; }
 .check-item.current { border-left-color: #4a6fc0; background-color: rgba(128, 128, 128, 0.2); }
 .check-item.locked { opacity: 0.5; }
 .check-item.done strong { color: gray; text-decoration: line-through; }
 .check-text small { display: block; margin-top: 2px; }
 .step-control { color: #4a6fc0; }
-
-.paper-foot { display: flex; gap: 8px; margin: 10px 0 6px; }
-.paper-stamp {
-  display: none;
-  position: absolute;
-  right: 14px; bottom: 60px;
-  transform: rotate(-8deg);
-  padding: 6px 12px;
-  border: 2px solid #3a9d4a;
-  background-color: #201e1b;
-  color: #3a9d4a;
-  font-weight: bold;
-}
+.paper-foot { display: flex; gap: 8px; margin: 10px 0px 6px; }
+.paper-stamp { display: none; position: absolute; right: 14px; bottom: 60px; padding: 6px 12px; border: 2px solid #3a9d4a; background-color: #201e1b; color: #3a9d4a; font-weight: bold; }
 .paper-stamp.show { display: block; }
 
-/* ---------- test mode ---------- */
 .test-panel { padding: 14px; }
-.test-panel h2 { font-size: 18px; margin: 4px 0; }
+.test-panel h2 { margin: 4px 0px; font-size: 18px; }
 .test-panel-kicker, .test-panel-intro { color: gray; font-size: 12px; }
-.test-panel-stats { display: flex; gap: 24px; margin: 10px 0; }
+.test-panel-stats { display: flex; gap: 24px; margin: 10px 0px; }
 .test-progress-track { height: 6px; border: 1px solid #777; }
-#testProgressBar { display: block; height: 100%; background-color: #2c4272; }
+#testProgressBar { display: block; height: 4px; background-color: #2c4272; }
 .test-panel.is-complete #testProgressBar { background-color: #3a9d4a; }
 .test-panel.is-failed #testProgressBar { background-color: #d9534f; }
-.test-message { margin: 10px 0; }
-
-.test-result-dialog { width: min(340px, 90vw); padding: 24px; text-align: center; }
+.test-message { margin: 10px 0px; }
+.test-result-dialog { width: 340px; padding: 24px; text-align: center; }
 .test-result-dialog::backdrop { background-color: rgba(0, 0, 0, 0.6); }
-.test-result-graphic svg { width: 56px; height: 56px; fill: none; stroke: #3a9d4a; stroke-width: 3; }
+.test-result-graphic svg { width: 56px; height: 56px; fill: none; stroke: #3a9d4a; stroke-width: 3px; }
 .test-result-label { margin-top: 8px; color: #3a9d4a; font-size: 12px; }
 .test-result-dialog.is-failed svg { stroke: #d9534f; }
 .test-result-dialog.is-failed .test-result-label { color: #d9534f; }
-.test-result-dialog h2 { margin: 6px 0; }
+.test-result-dialog h2 { margin: 6px 0px; }
 .test-result-description { color: gray; }
-.test-result-score { margin: 12px 0; }
+.test-result-score { margin: 12px 0px; }
 .test-result-actions { display: flex; gap: 8px; justify-content: center; }
 
-/* ---------- home page ---------- */
-.home-screen {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 100;
-  overflow-y: auto;
-  background-color: #161513;
-}
-.home-header, .home-content { width: min(720px, 92%); margin: 0 auto; }
-.home-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+.home-screen { position: fixed; top: 0px; right: 0px; bottom: 0px; left: 0px; z-index: 100; overflow-y: auto; background-color: #161513; }
+.home-header, .home-content { width: 720px; margin: 0px auto; }
+.home-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0px; }
 .home-brand { color: inherit; text-decoration: none; }
 .home-brand strong, .home-brand small, .activity-row strong, .activity-row small { display: block; }
 .home-brand strong { font-size: 18px; }
-.home-hero { margin: 24px 0 20px; }
+.home-hero { margin: 24px 0px 20px; }
 .home-hero h1 { font-size: 36px; }
 .home-intro { margin-top: 8px; color: gray; }
-
 .activity-list { display: grid; gap: 8px; }
-.activity-row {
-  padding: 14px;
-  border: 1px solid #777;
-  border-left: 4px solid #2c4272;
-  border-radius: 4px;
-  background-color: #201e1b;
-  color: inherit;
-  text-decoration: none;
-}
+.activity-row { padding: 14px; border: 1px solid #777; border-left: 4px solid #2c4272; border-radius: 4px; background-color: #201e1b; color: inherit; text-decoration: none; }
 .activity-row:hover { border-color: #4a6fc0; }
 .activity-row strong { font-size: 17px; }
-
-.home-test {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin-top: 20px;
-  padding: 14px;
-}
+.home-test { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-top: 20px; padding: 14px; }
 .home-test h2 { font-size: 17px; }
 .home-test p { color: gray; }
 .home-test-links { display: flex; gap: 14px; }
 .home-test-links a { color: #4a6fc0; font-weight: bold; }
 .profile-note { margin-top: 20px; padding: 14px; }
-.profile-note h2 { font-size: 15px; margin: 4px 0; }
+.profile-note h2 { margin: 4px 0px; font-size: 15px; }
 .profile-note p { color: gray; }
 .profile-note-kicker { color: #4a6fc0; font-size: 12px; font-weight: bold; }
-.home-footer { margin: 20px 0; color: gray; font-size: 12px; }
+.home-footer { margin: 20px 0px; color: gray; font-size: 12px; }
 
-/* ---------- chatbot ---------- */
-.chatbot-launcher { position: fixed; left: 14px; bottom: 14px; z-index: 60; }
-.chatbot-panel {
-  position: fixed;
-  left: 14px; bottom: 62px;
-  z-index: 60;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: min(340px, 94vw);
-  max-height: 70vh;
-  padding: 12px;
-}
+.chatbot-launcher { position: fixed; bottom: 14px; left: 14px; z-index: 60; }
+.chatbot-panel { position: fixed; bottom: 62px; left: 14px; z-index: 60; display: flex; flex-direction: column; gap: 10px; width: 340px; max-height: 600px; padding: 12px; overflow-y: auto; }
 .chatbot-header { display: flex; justify-content: space-between; }
 .chatbot-header h2 { font-size: 17px; }
 .chatbot-eyebrow, .chatbot-intro { color: gray; font-size: 12px; }
@@ -326,37 +133,26 @@ button:disabled { opacity: 0.5; }
 .chatbot-questions { display: flex; flex-direction: column; gap: 6px; max-height: 160px; overflow-y: auto; }
 .chatbot-question { text-align: left; font-size: 13px; }
 
-/* ---------- phone screens ---------- */
 @media (max-width: 760px) {
-  /* top bar becomes 2 rows: name on top, buttons underneath */
   .topbar { height: 104px; flex-wrap: wrap; align-content: center; gap: 6px; padding: 6px 8px; }
-  .brand { flex: 1 0 100%; }
+  .brand { flex: 1 0 150px; }
   .brand h1 { font-size: 18px; }
   .brand p { display: none; }
   .tabs a, .home-button, .theme-toggle { padding: 6px 8px; font-size: 12px; }
   #themeBtn { margin-left: auto; }
-
-  /* everything that sat under the 64px bar moves down to 104px */
   .cockpit-stage { top: 104px; }
-  .info-toast, .control-panel { top: 116px; }
-
-  /* checklist can scroll so it never goes off the screen */
-  .dashboard {
-    right: 8px; bottom: 8px;
-    width: calc(100vw - 16px);
-    max-height: calc(100vh - 168px);
-    overflow-y: auto;
-  }
+  .info-toast { top: 116px; }
+  .control-panel { top: 116px; right: 8px; width: 320px; }
+  .dashboard { right: 8px; bottom: 8px; width: 340px; max-height: 500px; }
   .paper-lines { max-height: none; }
-
-  /* chatbot goes under the top bar */
   .chatbot-launcher { top: 112px; bottom: auto; left: 8px; padding: 6px 10px; font-size: 12px; }
-  .chatbot-panel { top: 152px; bottom: auto; left: 8px; width: calc(100vw - 16px); }
-
-  /* cockpit picture fits the screen width so you can see all of it */
-  .cockpit-frame { width: 100vw; }
-  .hotspot { padding: 0; }
-  .hotspot .dot { width: 10px; height: 10px; border-width: 1px; }
-  .transponder-spot .dot { width: 12px; height: 12px; }
+  .chatbot-panel { top: 152px; bottom: auto; left: 8px; width: 340px; max-height: 400px; }
+  .home-header, .home-content { width: auto; margin: 0px 20px; }
   .transponder-spot .tag { opacity: 0; }
 }
+@media (max-width: 420px) { .info-toast { right: 8px; left: 8px; width: auto; margin: 0px; } }
+@media (max-width: 360px) {
+  .control-panel, .dashboard, .chatbot-panel { right: 8px; left: 8px; width: auto; }
+  .test-result-dialog { width: 300px; }
+}
+@media (max-height: 500px) { .dashboard, .chatbot-panel { max-height: 300px; } }

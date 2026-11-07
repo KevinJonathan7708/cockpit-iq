@@ -11,6 +11,9 @@ const nextBtn = $("nextBtn");
 const resetBtn = $("resetBtn");
 const boardToggle = $("boardToggle");
 const kneeboard = document.querySelector(".kneeboard");
+const cockpitImage = document.querySelector(".cockpit-img");
+const cockpitFrame = document.querySelector(".cockpit-frame");
+const topBar = document.querySelector(".topbar");
 const procedureTargets = $("procedureTargets");
 const testPanel = $("testPanel");
 const testTitle = $("testTitle");
@@ -41,6 +44,30 @@ const simReadout = {
   mixture: $("simMixture"), lights: $("simLights"), strobe: $("simStrobe"),
   xpdr: $("simXpdr"),
 };
+
+// Keep the hotspot dots lined up when the image resizes.
+function fitCockpit() {
+  if (!cockpitImage || !cockpitFrame || !topBar || !cockpitImage.naturalWidth) return;
+
+  const availableHeight = Math.max(120, window.innerHeight - topBar.offsetHeight);
+  const scale = Math.min(window.innerWidth / cockpitImage.naturalWidth, availableHeight / cockpitImage.naturalHeight);
+  const width = Math.floor(cockpitImage.naturalWidth * scale);
+  const height = Math.floor(cockpitImage.naturalHeight * scale);
+
+  cockpitFrame.style.width = `${width}px`;
+  cockpitFrame.style.height = `${height}px`;
+  cockpitImage.style.width = `${width}px`;
+  cockpitImage.style.height = `${height}px`;
+
+  document.querySelectorAll(".hotspot").forEach((button) => {
+    const x = Number(button.dataset.x) * width / cockpitImage.naturalWidth;
+    const y = Number(button.dataset.y) * height / cockpitImage.naturalHeight;
+    button.style.left = `${x}px`;
+    button.style.top = `${y}px`;
+    button.style.marginLeft = `${-button.offsetWidth / 2}px`;
+    button.style.marginTop = `${-button.offsetHeight}px`;
+  });
+}
 
 const supportedRequirements = new Set([
   "brake", "flaps_takeoff", "flaps_landing", "flaps_up", "trim_takeoff",
@@ -202,7 +229,9 @@ function updateTestScore() {
   const rows = getRows();
   const done = rows.filter((row) => row.querySelector("input").checked).length;
   if (testProgress) testProgress.textContent = `${done} / ${rows.length}`;
-  if (testProgressBar) testProgressBar.style.width = `${rows.length ? (done / rows.length) * 100 : 0}%`;
+  const trackWidth = testProgressBar?.parentElement?.clientWidth ?? 0;
+  const barWidth = rows.length ? trackWidth * done / rows.length : 0;
+  if (testProgressBar) testProgressBar.style.width = `${barWidth}px`;
   if (testMistakesText) testMistakesText.textContent = `${testMistakeCount} / 3`;
 }
 
@@ -216,7 +245,6 @@ function finishTest(state) {
     else if (testMistakeCount === 0) testMessage.textContent = "Awesome job — you finished with zero mistakes.";
     else testMessage.textContent = `Procedure complete with ${testMistakeCount} ${testMistakeCount === 1 ? "mistake" : "mistakes"}. Restart to improve your score.`;
   }
-  testResultDialog?.classList.toggle("is-complete", state === "complete");
   testResultDialog?.classList.toggle("is-failed", state === "failed");
   testResultIconPath?.setAttribute("d", state === "failed" ? "M16 16l16 16M32 16 16 32" : "M13 24l7 7 15-16");
   if (testResultScore) testResultScore.textContent = `${testMistakeCount} / 3`;
@@ -950,6 +978,13 @@ document.addEventListener("keydown", (event) => {
     if (controlPanel && !controlPanel.hidden) closeControlPanel(true);
     if (infoBox?.classList.contains("show")) hideInfo(true);
   }
+});
+
+if (cockpitImage?.complete) fitCockpit();
+else cockpitImage?.addEventListener("load", fitCockpit);
+window.addEventListener("resize", () => {
+  fitCockpit();
+  updateTestScore();
 });
 
 if (isValidProcedures(procedures)) {
