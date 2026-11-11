@@ -22,28 +22,16 @@
   }
 
   var authEventReceived = false;
-  var fallbackTimer = window.setTimeout(function () {
-    signUpLink.hidden = false;
-    signInLink.hidden = false;
-    root.classList.remove("auth-nav-pending");
-  }, 3000);
 
   auth.client.auth.onAuthStateChange(function (_event, session) {
     authEventReceived = true;
-    window.clearTimeout(fallbackTimer);
     render(session);
   });
 
   auth.client.auth.getSession().then(function (result) {
     if (result.error) throw result.error;
-    if (!authEventReceived) {
-      window.clearTimeout(fallbackTimer);
-      render(result.data.session);
-    }
+    if (!authEventReceived) render(result.data.session);
   }).catch(function () {
-    if (!authEventReceived) {
-      window.clearTimeout(fallbackTimer);
-      render(null);
-    }
+    if (!authEventReceived) render(null);
   });
 })();

@@ -151,6 +151,9 @@ button:disabled { border-color: var(--border); background-color: var(--disabled-
 .auth-nav-pending .top-links .auth-nav-link {
   visibility: hidden;
 }
+.top-links .auth-nav-link[hidden] {
+  display: none !important;
+}
 .home-header,
 .home-content {
   width: 720px;
@@ -262,6 +265,8 @@ button:disabled { border-color: var(--border); background-color: var(--disabled-
 .dashboard-screen {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 .dashboard-screen > .dash-header,
 .dashboard-screen > .home-footer {
@@ -270,7 +275,7 @@ button:disabled { border-color: var(--border); background-color: var(--disabled-
 .dashboard-screen > .home-footer {
   width: 100%;
   margin: auto 0px 0px;
-  padding: 14px max(20px, calc((100% - 1200px) / 2 + 20px));
+  padding: 14px max(20px, calc((100% - 1280px) / 2 + 20px));
   border-top: 1px solid var(--border);
   background-color: var(--surface);
   line-height: 1.5;
@@ -694,8 +699,8 @@ body.page-plain .chatbot-panel {
 .dash-layout {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 0px 20px 24px;
+  gap: 24px;
+  padding: 0px 20px 28px;
 }
 .dashboard-screen > .dash-layout {
   flex: 1 0 auto;
@@ -738,10 +743,10 @@ body.page-plain .chatbot-panel {
 .dash-side {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 }
 .dash-card {
-  padding: 18px;
+  padding: 20px;
   border: 1px solid var(--border);
   border-radius: 4px;
   background-color: var(--surface);
@@ -862,8 +867,21 @@ body.page-plain .chatbot-panel {
 
 @media (min-width: 1100px) {
   .dash-layout {
-    grid-template-columns: 260px minmax(0px, 1fr) 320px;
-    max-width: 1200px;
+    grid-template-columns: 240px minmax(0px, 1fr) 340px;
+    max-width: 1280px;
+  }
+  .dash-main {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+    align-content: start;
+  }
+  .dash-main > :first-child,
+  .dash-main > .activity-list,
+  .dash-main > .home-test {
+    grid-column: 1 / -1;
+  }
+  .dash-main > .activity-list {
+    grid-template-columns: repeat(3, minmax(0px, 1fr));
   }
   .dash-side {
     grid-column: auto;
