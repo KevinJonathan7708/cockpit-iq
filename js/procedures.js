@@ -21,7 +21,7 @@ window.CockpitProfiles = {
       ],
       reviewerRole: "",
       reviewedOn: "",
-      note: "Classroom source references are recorded, but this old manual copy is not confirmed current or applicable to a specific airplane. This profile is not verified for flight.",
+      note: "Aircraft-specific verification has not been completed.",
     },
     targets: {
       rotation: 55,

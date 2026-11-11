@@ -4,7 +4,7 @@ var patterns = {
   email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
   mobile: /^[6-9]\d{9}$/,
   password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/,
-  loginPassword: /^.{8,}$/
+  loginPassword: /^.+$/
 };
 
 var errorMessages = {
@@ -13,7 +13,7 @@ var errorMessages = {
   email: "Enter a valid email address like name@example.com.",
   mobile: "Enter a 10-digit number starting with 6, 7, 8 or 9.",
   password: "Use 8 or more characters with uppercase, lowercase, a number and one of @$!%*?&.",
-  loginPassword: "Password must be at least 8 characters."
+  loginPassword: "Enter your password."
 };
 
 var form = document.getElementById("authForm");
@@ -100,6 +100,10 @@ function onBlur() {
 }
 
 function onEdit() {
+  if (loginAlert) {
+    loginAlert.hidden = true;
+  }
+
   if (this.classList.contains("invalid")) {
     checkField(this);
   }
@@ -153,7 +157,7 @@ form.addEventListener("submit", function (event) {
   }
 
   if (loginAlert) {
-    loginAlert.hidden = allValid;
+    loginAlert.hidden = true;
   }
 
   if (!allValid) {

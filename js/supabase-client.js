@@ -87,6 +87,12 @@
     if (button) button.disabled = false;
   }
 
+  function isInvalidLogin(error) {
+    var message = error && error.message ? error.message.toLowerCase() : "";
+    var code = error && error.code ? error.code.toLowerCase() : "";
+    return message.indexOf("invalid login credentials") !== -1 || code === "invalid_credentials";
+  }
+
   async function submitAuthForm(form) {
     var mode = form.dataset.authMode;
     var emailField = form.querySelector('[name="email"]');
@@ -123,7 +129,16 @@
         setMessage(form, "Account created. Check your email to confirm it, then sign in.", false);
       }
     } catch (error) {
-      setMessage(form, error && error.message ? error.message : "The account request failed. Try again.", true);
+      if (mode === "signin" && isInvalidLogin(error)) {
+        var loginAlert = form.querySelector("#loginAlert");
+        if (loginAlert) {
+          loginAlert.textContent = "Wrong password or email.";
+          loginAlert.hidden = false;
+        }
+        setMessage(form, "", false);
+      } else {
+        setMessage(form, error && error.message ? error.message : "The account request failed. Try again.", true);
+      }
     }
   }
 
