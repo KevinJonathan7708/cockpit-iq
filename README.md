@@ -34,7 +34,6 @@ The airspeed slider is a user-set training indication. It does not model aircraf
 ## Verification records
 
 - [Practicum learning map](docs/learning-map.md) shows which course topics appear in each project feature.
-- [Project readiness checklist](docs/project-readiness-checklist.md) separates implemented source features from items still awaiting live or manual evidence.
 - [WCAG 2.1 AA review checklist](docs/accessibility/WCAG-2.1-AA.md) links the normative standard and Quick Reference. Its status remains unverified until manual and assistive-technology checks are recorded.
 - [Aircraft profile source record](docs/aircraft-profile-verification.md) maps the classroom example values to a Cessna 172S POH and explains why the profile stays unverified for real aircraft.
 - [Performance and browser verification](docs/quality/performance-browser-verification.md) contains the SRS targets and an evidence matrix. Targets are not claimed as passed until measured.
