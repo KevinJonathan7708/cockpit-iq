@@ -11,7 +11,7 @@
 </head>
 <body class="page-plain">
   <a class="skip-link" href="#mainContent">Skip to dashboard content</a>
-  <main class="home-screen">
+  <main class="home-screen dashboard-screen">
     <header class="dash-header">
       <button id="menuBtn" class="menu-button" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open navigation menu">☰</button>
       <a class="home-brand" href="index.html">
@@ -45,9 +45,11 @@
         <section class="dash-card" aria-labelledby="accountHeading">
           <h2 id="accountHeading">Account</h2>
           <p id="accountStatus" class="card-note" role="status" aria-live="polite">Account service status will appear here.</p>
-          <a id="accountSignInLink" href="signin.html">Sign in to save and view your test history.</a>
-          <button id="signOutBtn" class="toggle-button" type="button" hidden>Sign out</button>
-          <p class="card-note">Read the <a href="privacy.html">Privacy Notice</a> and <a href="terms.html">Terms of Service</a>.</p>
+          <div class="account-actions">
+            <a id="accountSignInLink" href="signin.html">Sign in to save and view your test history.</a>
+            <button id="signOutBtn" class="toggle-button" type="button" hidden>Sign out</button>
+          </div>
+          <p class="card-note account-privacy-note">Read the <a href="privacy.html">Privacy Notice</a> and <a href="terms.html">Terms of Service</a>.</p>
         </section>
 
         <section class="dash-card" aria-labelledby="historyHeading">

@@ -6,6 +6,7 @@
   <meta name="description" content="Choose a takeoff or landing checklist, or explore the Cessna 172S cockpit.">
   <title>CockpitIQ — Procedure Trainer</title>
   <link rel="icon" type="image/png" href="data/title_plen.png">
+  <script>document.documentElement.classList.add("auth-nav-pending");</script>
   <script src="js/theme-init.js"></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -21,8 +22,8 @@
         <a href="index.html" aria-current="page">Home</a>
         <a href="home.html">Dashboard</a>
         <a href="register.html">Register</a>
-        <a href="signup.html">Sign Up</a>
-        <a href="signin.html">Sign In</a>
+        <a id="siteSignUpLink" class="auth-nav-link" href="signup.html">Sign Up</a>
+        <a id="siteSignInLink" class="auth-nav-link" href="signin.html">Sign In</a>
       </nav>
       <button id="themeBtn" class="theme-toggle" type="button" aria-label="Switch to light theme">Light mode</button>
     </header>
@@ -86,6 +87,10 @@
       verificationMessage.classList.toggle("is-verified", verified);
     }
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/site-auth-nav.js"></script>
   <script src="js/chatbot.js"></script>
   <script src="js/theme.js"></script>
 </body>
