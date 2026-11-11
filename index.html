@@ -9,6 +9,31 @@
   <script>document.documentElement.classList.add("auth-nav-pending");</script>
   <script src="js/theme-init.js"></script>
   <link rel="stylesheet" href="css/styles.css">
+
+  <script src="js/procedures.js" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var profile = window.CockpitProfiles.profile;
+      if (profile) {
+        document.getElementById("profileTitle").textContent = profile.aircraft + " · " + profile.configuration;
+        document.getElementById("profileDescription").textContent = profile.sourceNote;
+        var verificationMessage = document.getElementById("profileVerification");
+        var verified = window.isAircraftProfileVerified(profile);
+        verificationMessage.textContent = verified
+          ? profile.verification.note
+          : profile.verification.status === "verified"
+            ? "Verification record incomplete. Treat this profile as unverified and follow the applicable aircraft manual and instructor guidance."
+            : profile.verification.note;
+        verificationMessage.classList.toggle("is-verified", verified);
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0" defer></script>
+  <script src="js/supabase-config.js" defer></script>
+  <script src="js/supabase-client.js" defer></script>
+  <script src="js/site-auth-nav.js" defer></script>
+  <script src="js/chatbot.js" defer></script>
+  <script src="js/theme.js" defer></script>
 </head>
 <body class="page-plain">
   <a class="skip-link" href="#mainContent">Skip to training activities</a>
@@ -71,27 +96,5 @@
       <footer class="home-footer">Classroom software demonstration only. Do not use this trainer to operate an aircraft.</footer>
     </div>
   </main>
-  <script src="js/procedures.js"></script>
-  <script>
-    var profile = window.CockpitProfiles.profile;
-    if (profile) {
-      document.getElementById("profileTitle").textContent = profile.aircraft + " · " + profile.configuration;
-      document.getElementById("profileDescription").textContent = profile.sourceNote;
-      var verificationMessage = document.getElementById("profileVerification");
-      var verified = window.isAircraftProfileVerified(profile);
-      verificationMessage.textContent = verified
-        ? profile.verification.note
-        : profile.verification.status === "verified"
-          ? "Verification record incomplete. Treat this profile as unverified and follow the applicable aircraft manual and instructor guidance."
-          : profile.verification.note;
-      verificationMessage.classList.toggle("is-verified", verified);
-    }
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0"></script>
-  <script src="js/supabase-config.js"></script>
-  <script src="js/supabase-client.js"></script>
-  <script src="js/site-auth-nav.js"></script>
-  <script src="js/chatbot.js"></script>
-  <script src="js/theme.js"></script>
 </body>
 </html>
