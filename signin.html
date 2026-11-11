@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sign in to CockpitIQ.">
+  <title>CockpitIQ — Sign In</title>
+  <link rel="icon" type="image/png" href="data/title_plen.png">
+  <script src="js/theme-init.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-plain">
+  <a class="skip-link" href="#mainContent">Skip to sign-in form</a>
+  <main class="home-screen">
+    <header class="home-header">
+      <a class="home-brand" href="index.html">
+        <strong>CockpitIQ</strong>
+        <small>Cessna 172S procedure trainer</small>
+      </a>
+      <nav class="top-links" aria-label="Site pages">
+        <a href="index.html">Home</a>
+        <a href="home.html">Dashboard</a>
+        <a href="register.html">Register</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="signin.html" aria-current="page">Sign In</a>
+      </nav>
+      <button id="themeBtn" class="theme-toggle" type="button" aria-label="Switch to light theme">Light mode</button>
+    </header>
+
+    <div id="mainContent" class="home-content" tabindex="-1">
+      <section class="home-hero">
+        <h1>Sign in</h1>
+        <p class="home-intro">Enter your email and password.</p>
+      </section>
+
+      <section class="auth-card">
+        <div id="loginAlert" class="alert-banner" role="alert" hidden>Invalid credential format. Enter a valid email address and a password of at least 8 characters.</div>
+        <form id="authForm" data-auth-mode="signin" data-disable-submit="no" novalidate>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" data-rule="email" autocomplete="email" aria-describedby="email-error">
+            <span id="email-error" class="error-msg" aria-live="polite"></span>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="password-row">
+              <input id="password" name="password" type="password" data-rule="loginPassword" autocomplete="current-password" aria-describedby="password-error">
+              <button id="togglePassword" class="toggle-button" type="button" aria-label="Show password" aria-pressed="false">👁 Show</button>
+            </div>
+            <span id="password-error" class="error-msg" aria-live="polite"></span>
+          </div>
+
+          <button id="submitBtn" class="submit-button" type="submit">Sign in</button>
+          <p id="formMessage" class="form-message" role="status"></p>
+        </form>
+        <p class="auth-links">New here? <a href="signup.html">Sign up</a> or <a href="register.html">register</a>. Read the <a href="privacy.html">Privacy Notice</a>.</p>
+      </section>
+
+      <footer class="home-footer">Abbreviated educational trainer only. Verify procedures against the aircraft’s approved instructor guidance.</footer>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/auth-ui.js"></script>
+</body>
+</html>

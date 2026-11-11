@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register a CockpitIQ trainee profile.">
+  <title>CockpitIQ — Register</title>
+  <link rel="icon" type="image/png" href="data/title_plen.png">
+  <script src="js/theme-init.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-plain">
+  <a class="skip-link" href="#mainContent">Skip to registration form</a>
+  <main class="home-screen">
+    <header class="home-header">
+      <a class="home-brand" href="index.html">
+        <strong>CockpitIQ</strong>
+        <small>Cessna 172S procedure trainer</small>
+      </a>
+      <nav class="top-links" aria-label="Site pages">
+        <a href="index.html">Home</a>
+        <a href="home.html">Dashboard</a>
+        <a href="register.html" aria-current="page">Register</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="signin.html">Sign In</a>
+      </nav>
+      <button id="themeBtn" class="theme-toggle" type="button" aria-label="Switch to light theme">Light mode</button>
+    </header>
+
+    <div id="mainContent" class="home-content" tabindex="-1">
+      <section class="home-hero">
+        <h1>Register</h1>
+        <p class="home-intro">Create an account. Only your name and email are attached to the account; the other registration fields are validated but not stored.</p>
+      </section>
+
+      <section class="auth-card">
+        <form id="authForm" data-auth-mode="register" data-disable-submit="yes" novalidate>
+          <div class="field">
+            <label for="fullName">Full name</label>
+            <input id="fullName" name="fullName" type="text" data-rule="name" autocomplete="name" aria-describedby="fullName-error">
+            <span id="fullName-error" class="error-msg" aria-live="polite"></span>
+          </div>
+
+          <div class="field">
+            <label for="empId">Employee / Register ID</label>
+            <input id="empId" name="empId" type="text" data-rule="id" autocomplete="off" aria-describedby="empId-error">
+            <span id="empId-error" class="error-msg" aria-live="polite"></span>
+          </div>
+
+          <div class="field">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" data-rule="email" autocomplete="email" aria-describedby="email-error">
+            <span id="email-error" class="error-msg" aria-live="polite"></span>
+          </div>
+
+          <div class="field">
+            <label for="mobile">Mobile number</label>
+            <input id="mobile" name="mobile" type="tel" inputmode="numeric" data-rule="mobile" autocomplete="tel" aria-describedby="mobile-error">
+            <span id="mobile-error" class="error-msg" aria-live="polite"></span>
+          </div>
+
+          <div class="field">
+            <label for="dept">Division</label>
+            <select id="dept" name="dept" data-rule="select" aria-describedby="dept-error">
+              <option value="">Select your division</option>
+              <option value="CSE">Computer Science &amp; Engineering</option>
+              <option value="ECE">Electronics &amp; Communication</option>
+              <option value="EEE">Electrical &amp; Electronics</option>
+              <option value="MECH">Mechanical Engineering</option>
+              <option value="AERO">Aerospace Engineering</option>
+              <option value="CIVIL">Civil Engineering</option>
+            </select>
+            <span id="dept-error" class="error-msg" aria-live="polite"></span>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" data-rule="password" autocomplete="new-password" aria-describedby="passwordHint password-error">
+            <small id="passwordHint">At least 8 characters with uppercase, lowercase, a number and one of @$!%*?&</small>
+            <span id="password-error" class="error-msg" aria-live="polite"></span>
+          </div>
+
+          <div class="field">
+            <label for="confirmPassword">Confirm password</label>
+            <input id="confirmPassword" name="confirmPassword" type="password" data-rule="confirm" autocomplete="new-password" aria-describedby="confirmPassword-error">
+            <span id="confirmPassword-error" class="error-msg" aria-live="polite"></span>
+          </div>
+
+          <div class="field">
+            <label class="check-row" for="terms">
+              <input id="terms" name="terms" type="checkbox" data-rule="terms" aria-describedby="terms-error">
+              I accept the Terms of Service
+            </label>
+            <span id="terms-error" class="error-msg" aria-live="polite"></span>
+          </div>
+          <p class="auth-links">Read the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Notice</a> to learn about account and test data.</p>
+
+          <button id="submitBtn" class="submit-button" type="submit" disabled>Register</button>
+          <p id="formMessage" class="form-message" role="status"></p>
+        </form>
+        <p class="auth-links">Already registered? <a href="signin.html">Sign in</a></p>
+      </section>
+
+      <footer class="home-footer">Abbreviated educational trainer only. Verify procedures against the aircraft’s approved instructor guidance.</footer>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/auth-ui.js"></script>
+</body>
+</html>

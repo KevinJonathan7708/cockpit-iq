@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CockpitIQ dashboard with procedures, reference targets and a calculator.">
+  <title>CockpitIQ — Dashboard</title>
+  <link rel="icon" type="image/png" href="data/title_plen.png">
+  <script src="js/theme-init.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-plain">
+  <a class="skip-link" href="#mainContent">Skip to dashboard content</a>
+  <main class="home-screen">
+    <header class="dash-header">
+      <button id="menuBtn" class="menu-button" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open navigation menu">☰</button>
+      <a class="home-brand" href="index.html">
+        <strong>CockpitIQ</strong>
+        <small>Cessna 172S procedure trainer</small>
+      </a>
+      <button id="themeBtn" class="theme-toggle" type="button" aria-label="Switch to light theme">Light mode</button>
+    </header>
+
+    <div id="mainContent" class="dash-layout" tabindex="-1">
+      <nav id="drawer" class="dash-menu" aria-label="Dashboard menu">
+        <h2>Trainer</h2>
+        <a href="trainer.html?procedure=takeoff">Takeoff checklist</a>
+        <a href="trainer.html?procedure=landing">Landing checklist</a>
+        <a href="trainer.html?procedure=explore">Explore the cockpit</a>
+        <a href="trainer.html?procedure=takeoff&amp;mode=test">Takeoff test</a>
+        <a href="trainer.html?procedure=landing&amp;mode=test">Landing test</a>
+        <h2>Pages</h2>
+        <a href="index.html">Landing page</a>
+        <a href="register.html">Register</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="signin.html">Sign In</a>
+      </nav>
+
+      <div class="dash-main">
+        <section class="dash-card">
+          <h1>Welcome, <span id="welcomeName">trainee</span></h1>
+          <p class="card-note">Pick a procedure, test yourself, or use the flight calculators for glide distance and density altitude.</p>
+        </section>
+
+        <section class="dash-card" aria-labelledby="accountHeading">
+          <h2 id="accountHeading">Account</h2>
+          <p id="accountStatus" class="card-note" role="status" aria-live="polite">Account service status will appear here.</p>
+          <a id="accountSignInLink" href="signin.html">Sign in to save and view your test history.</a>
+          <button id="signOutBtn" class="toggle-button" type="button" hidden>Sign out</button>
+          <p class="card-note">Read the <a href="privacy.html">Privacy Notice</a> and <a href="terms.html">Terms of Service</a>.</p>
+        </section>
+
+        <section class="dash-card" aria-labelledby="historyHeading">
+          <h2 id="historyHeading">Previous test results</h2>
+          <p id="historyStatus" class="card-note" role="status" aria-live="polite">Sign in to view your saved results.</p>
+          <ul id="historyList" class="attempt-list" aria-label="Saved test attempts"></ul>
+          <button id="loadMoreHistoryBtn" class="toggle-button" type="button" hidden>Load older results</button>
+          <button id="clearHistoryBtn" class="toggle-button" type="button" hidden>Delete my test history</button>
+        </section>
+
+        <nav class="activity-list" aria-label="Training activities">
+          <a class="activity-row" href="trainer.html?procedure=takeoff">
+            <strong>Takeoff</strong><small>Before takeoff, roll, and climb · <span id="takeoffCount">?</span> steps</small>
+          </a>
+          <a class="activity-row" href="trainer.html?procedure=landing">
+            <strong>Landing</strong><small>Approach, touchdown, and runway exit · <span id="landingCount">?</span> steps</small>
+          </a>
+          <a class="activity-row" href="trainer.html?procedure=explore">
+            <strong>Explore the cockpit</strong><small>Identify and adjust simulated controls</small>
+          </a>
+        </nav>
+
+        <section class="home-test" aria-labelledby="testHeading">
+          <div>
+            <h2 id="testHeading">Test yourself</h2>
+            <p>Run a procedure without the checklist. Three mistakes end the test.</p>
+          </div>
+          <div class="home-test-links">
+            <a href="trainer.html?procedure=takeoff&amp;mode=test">Takeoff test</a>
+            <a href="trainer.html?procedure=landing&amp;mode=test">Landing test</a>
+          </div>
+        </section>
+      </div>
+
+      <div class="dash-side">
+        <section class="dash-card" aria-labelledby="calcHeading">
+          <h2 id="calcHeading">Flight calculators</h2>
+          <div id="calculator"></div>
+        </section>
+
+        <section class="dash-card" aria-labelledby="refHeading">
+          <h2 id="refHeading">Reference targets</h2>
+          <p class="ref-row"><small>Rotation</small><strong id="refRotation">-</strong></p>
+          <p class="ref-row"><small>Climb</small><strong id="refClimb">-</strong></p>
+          <p class="ref-row"><small>Safe flap speed</small><strong id="refFlap">-</strong></p>
+          <p class="ref-row"><small>Approach</small><strong id="refApproach">-</strong></p>
+          <p class="card-note">Example values for the generic profile only.</p>
+          <p id="profileVerification" class="verification-status" aria-live="polite">Aircraft-specific verification: pending.</p>
+        </section>
+      </div>
+    </div>
+    <footer class="home-footer">Classroom demo only. Not for real flight.</footer>
+  </main>
+  <script src="js/procedures.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/auth-ui.js"></script>
+</body>
+</html>

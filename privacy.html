@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CockpitIQ privacy notice describing account, test, and local browser data.">
+  <title>CockpitIQ — Privacy Notice</title>
+  <script src="js/theme-init.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-plain">
+  <a class="skip-link" href="#mainContent">Skip to privacy notice</a>
+  <main class="home-screen">
+    <header class="home-header">
+      <a class="home-brand" href="index.html"><strong>CockpitIQ</strong><small>Cessna 172S procedure trainer</small></a>
+      <nav class="top-links" aria-label="Site pages">
+        <a href="index.html">Home</a><a href="home.html">Dashboard</a><a href="terms.html">Terms</a>
+      </nav>
+      <button id="themeBtn" class="theme-toggle" type="button" aria-label="Switch to light theme">Light mode</button>
+    </header>
+    <article id="mainContent" class="home-content auth-card" tabindex="-1">
+      <h1>Privacy Notice</h1>
+      <p class="home-intro">Last updated: 11 November 2026</p>
+      <h2>Account and test data</h2>
+      <p>When Supabase is configured, CockpitIQ sends your account email and display name to Supabase Auth. A saved test attempt contains its procedure, result, completed/total steps, score percentage, mistakes, elapsed time, and completion time. Only the final result of a test-mode run is saved; in-progress checklist state and ordinary practice runs are not saved to the account.</p>
+      <p>The full Register form's employee/register ID, mobile number, and division are validated in the browser but are not sent to Supabase. CockpitIQ does not store aircraft serial numbers or aircraft identifiers in account records.</p>
+      <h2>Who can see test records</h2>
+      <p>Database Row Level Security policies limit each signed-in user to their own test attempts. The dashboard lets you delete an individual test attempt or all of your test history. To remove an account, contact the project owner through the course faculty.</p>
+      <h2>Browser-only data</h2>
+      <p>The theme preference, authentication session, and chatbot conversation are stored in this browser. Chat messages are not sent to Supabase. Use <strong>Clear chat</strong> in the help panel to remove the local conversation. Signing out clears the local authentication session.</p>
+      <h2>Help chat</h2>
+      <p>The help chat matches your words to a short list of fixed answers in the page. It works offline, does not generate flight instructions, and does not send questions to a server. The last 50 question-and-answer pairs are stored in this browser until you choose Clear chat or clear browser storage.</p>
+      <h2>Retention and deletion</h2>
+      <p>You control your saved test history from the dashboard. Account removal is handled by the project owner. Supabase may retain service backups according to its own service settings and retention periods.</p>
+      <h2>Setup status</h2>
+      <p>Account features remain unavailable until the project owner configures Supabase and applies the schema. If Supabase is not configured, test results are not saved.</p>
+      <p>See the <a href="terms.html">Terms of Service</a>.</p>
+    </article>
+    <footer class="home-footer">CockpitIQ is an educational practice aid. Use the applicable aircraft manual and instructor guidance.</footer>
+  </main>
+  <script src="js/theme.js"></script>
+</body>
+</html>

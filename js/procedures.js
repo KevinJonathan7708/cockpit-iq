@@ -4,7 +4,25 @@ window.CockpitProfiles = {
   profile: {
     aircraft: "Cessna 172S",
     configuration: "Generic normal-category training profile",
-    sourceNote: "Reference values are examples. Add the aircraft configuration and approved POH/AFM revision, then have an instructor review this profile before using it for a specific aircraft.",
+    sourceNote: "Classroom example values are mapped to a Cessna 172S POH/AFM. The archived manual copy is old and is not confirmed for any real aircraft. Do not use this demo for flight.",
+    verification: {
+      status: "unverified",
+      manualTitle: "Cessna Model 172S Pilot's Operating Handbook and FAA Approved Airplane Flight Manual",
+      manualRevision: "Publication 172SPHUS; archived copy includes Section 4 Revision 4 pages dated 30 May 2000. Current revision status not checked.",
+      aircraftApplicability: "Model reference for Cessna 172S airplanes 172S8001 and on; no individual aircraft or installed configuration is verified.",
+      supplements: [],
+      references: [
+        { topic: "targets.rotation", section: "4 Normal Procedures - Normal Takeoff", page: "4-15" },
+        { topic: "targets.climbMin and targets.climbMax", section: "4 Normal Procedures - Normal Takeoff", page: "4-15" },
+        { topic: "targets.safeFlapTarget", section: "4 Normal Procedures - Short Field Takeoff", page: "4-16" },
+        { topic: "settings.takeoffFlaps", section: "4 Normal Procedures - Before Takeoff and Normal Takeoff", page: "4-15" },
+        { topic: "targets.approachMin and targets.approachMax", section: "4 Airspeeds for Normal Operation and Normal Landing", page: "4-5 and 4-17" },
+        { topic: "settings.landingFlaps", section: "4 Normal Procedures - Short Field Landing", page: "4-17" },
+      ],
+      reviewerRole: "",
+      reviewedOn: "",
+      note: "Classroom source references are recorded, but this old manual copy is not confirmed current or applicable to a specific airplane. This profile is not verified for flight.",
+    },
     targets: {
       rotation: 55,
       climbMin: 70,
@@ -54,4 +72,40 @@ window.CockpitProfiles = {
       { name: "Clear runway", description: "Taxi clear at the appropriate exit and verify the aircraft is clear of the runway.", requires: "clear", control: "Rudder Pedals" },
     ],
   },
+};
+
+window.isAircraftProfileVerified = function (profile) {
+  if (!profile || !profile.verification) return false;
+
+  var verification = profile.verification;
+  if (verification.status !== "verified") return false;
+
+  var requiredFields = [
+    verification.manualTitle,
+    verification.manualRevision,
+    verification.aircraftApplicability,
+    verification.reviewerRole,
+    verification.reviewedOn,
+    verification.note,
+  ];
+
+  for (var i = 0; i < requiredFields.length; i++) {
+    if (typeof requiredFields[i] !== "string" || requiredFields[i].trim() === "") return false;
+  }
+
+  if (!Array.isArray(verification.supplements)) return false;
+  for (var j = 0; j < verification.supplements.length; j++) {
+    if (typeof verification.supplements[j] !== "string" || verification.supplements[j].trim() === "") return false;
+  }
+
+  if (!Array.isArray(verification.references) || verification.references.length === 0) return false;
+  for (var k = 0; k < verification.references.length; k++) {
+    var reference = verification.references[k];
+    if (!reference) return false;
+    if (typeof reference.topic !== "string" || reference.topic.trim() === "") return false;
+    if (typeof reference.section !== "string" || reference.section.trim() === "") return false;
+    if (typeof reference.page !== "string" || reference.page.trim() === "") return false;
+  }
+
+  return true;
 };

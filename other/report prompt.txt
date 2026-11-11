@@ -1,0 +1,70 @@
+Role & Objective:
+Act as an expert Software Engineering Consultant and strict Academic Evaluator. I am building a web-based educational procedure trainer called "CockpitIQ," hosted at [https://cockpit-iq.vercel.app](https://cockpit-iq.vercel.app). I need you to generate a comprehensive, highly professional Micro Project E-Report that meticulously connects all the provided project documents, frameworks, and roles. Secondly, I need a strict gap analysis identifying exactly what is currently missing or incomplete on the website based on the provided requirements and rubrics.
+
+Context & Provided Files:
+Please carefully review and synthesize the following documents:
+
+"00 Master Guide_ All Software Engineering Roles.pdf": Taxonomy of the 12 software engineering roles, project phases, and financial governance (cost vs. revenue).
+
+"01 Proposed Aligned Industry-Standard SDLC Framework.pdf": The 8-phase SDLC framework tailored for front-end web application capstones.
+
+"02 Master Software Requirements Specification (SRS) - INR.pdf": The baseline technical contract detailing functional (FR-01 to FR-04) and non-functional (performance, accessibility, cross-browser) requirements, alongside cost proposals.
+
+"03 Front-End Code Documentation Report.pdf": Technical architecture, zero-build dependencies, modular structure (app.js, api.js, etc.), accessibility (WCAG), and security measures.
+
+"25CS208_WT_Micro Project Proposal.docx": The specific project context for "CockpitIQ," covering rationale, literature review, proposed methodology, and action plan.
+
+"format.pdf": The strict IA-3 Continuous Internal Examination Master Checklist, including exact mandatory features (FR-01 to FR-08 like Registration regex, Dual Layouts, Dark Mode, Chatbot, JS Calculator), report chapters, and appendix requirements.
+
+"report checklist.pdf": General guidelines and sequence for the E-Report (Abstract, Literature Review, Methodology, etc.).
+
+"25CS208_Micro Project Rubrics-PART B.docx": The evaluation criteria (UI/UX, functionality, code quality, presentation) out of 40 marks.
+
+"steps.png": A chat screenshot outlining team roles, presentation requirements, and financial constraints (man-hours/budgeting) mapped to agricultural/layman explanations.
+
+Task 1: Generate the Micro Project E-Report Content
+Using the sequence mandated in "report checklist.pdf" and the chapter breakdown in "format.pdf", generate the text for the 20+ page report. Ensure you adapt the generic templates to specifically reflect the "CockpitIQ" aviation trainer concept from the proposal.
+
+Abstract: Summarize CockpitIQ, the HTML5/CSS3/JS tech stack, and Vercel hosting.
+
+Introduction: Cover the problem domain (flight procedure training), objectives, and SDG/technology mission links.
+
+Literature Review & Tech Stack: Synthesize the FAA references from the proposal and justify the tech stack (zero-build ES6 modules, CSS Grid/Flexbox). Include the student team role allocation table referencing the 12 roles from the "00 Master Guide" and "steps.png".
+
+System Requirements & SRS: Merge the proposal's scope with the IEEE 830 specs from the "02 SRS" file and the explicit FR-01 to FR-08 features listed in "format.pdf".
+
+Design & Code Implementation: Describe the architecture (index.html, CSS tokens, js/chatbot.js, js/calculator.js, js/validation.js), responsive strategies, and SDLC phases from "01 SDLC Framework". Include the financial governance (labor costs, hosting budget) from the Master Guide.
+
+Testing & Results: Detail the testing strategy (Regex validation, responsive viewports, Lighthouse accessibility scores).
+
+Conclusion & Future Scope: Summarize technical learnings and a roadmap for v2.0.
+
+Task 2: Strict Website Gap Analysis (What is Missing)
+Assume you are evaluating the live website ([https://cockpit-iq.vercel.app](https://cockpit-iq.vercel.app)). Compare its expected state against the mandatory technical checklists in "format.pdf", the SRS, and the Rubric. Output a detailed "Missing Requirements & Action Plan" section that clearly lists what needs to be built or fixed to achieve full marks.
+Specifically verify and list if the following are missing:
+
+Pages: Are register.html, signup.html, signin.html, and home.html fully built alongside the main index.html?
+
+Specific Features (FR-01 to FR-08 in format.pdf):
+
+Is the JS Calculator (js/calculator.js) implemented and functional?
+
+Is the Floating Chatbot (js/chatbot.js) integrated?
+
+Is the Dark/Light theme toggle saving to localStorage?
+
+Are the exact Regex validations (e.g., 10-digit mobile, complex password, alphanumeric ID) firing on blur/submit?
+
+Responsive Layouts: Does the dashboard switch perfectly between CSS Grid (desktop) and CSS Flexbox (mobile) as demanded?
+
+Aviation Specifics: Does the site meet the proposal's requirement of having interactive hotspots over the Cessna 172S cockpit image and a test-mode with a 3-strike scoring system?
+
+Performance & a11y: Does it pass WCAG 2.1 standards (keyboard focus, aria-labels) as required by the SDLC and SRS documents?
+
+Formatting Rules:
+
+Use clear Markdown headers (##, ###) aligning with the required report chapters.
+
+Use bullet points and bold text for the Gap Analysis to make it an easy-to-read checklist for a developer.
+
+Maintain a highly formal, academic, and technical tone throughout the report section.

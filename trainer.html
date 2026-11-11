@@ -4,12 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Interactive Cessna 172S takeoff and landing checklist trainer.">
-  <meta name="theme-color" content="#101820">
+  <meta name="theme-color" content="#161513">
   <title>CockpitIQ — Cockpit Trainer</title>
   <link rel="icon" type="image/png" href="data/title_plen.png">
-  <link rel="stylesheet" href="styles.css">
+  <script src="js/theme-init.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#mainContent">Skip to cockpit trainer</a>
   <div class="app-shell">
     <header class="topbar">
       <div class="brand">
@@ -25,13 +27,16 @@
       </nav>
 
       <button id="labelsBtn" class="home-button label-button" type="button" aria-pressed="false" aria-label="Show cockpit control labels">Labels</button>
-      <button id="themeBtn" class="theme-toggle" type="button"></button>
+      <button id="themeBtn" class="theme-toggle" type="button" aria-label="Switch to light theme">Light mode</button>
     </header>
 
-    <main class="workspace">
+    <main id="mainContent" class="workspace" tabindex="-1">
       <section class="cockpit-stage" tabindex="-1" aria-label="Interactive cockpit">
         <div class="cockpit-frame">
-          <img src="data/cockpit.jpg" alt="Cessna 172S cockpit instrument panel and controls" class="cockpit-img">
+          <picture>
+            <source srcset="data/cockpit.webp" type="image/webp">
+            <img src="data/cockpit.jpg" width="1920" height="1080" decoding="async" alt="Cessna 172S cockpit instrument panel and controls" class="cockpit-img">
+          </picture>
 
           <button class="hotspot" type="button" data-x="432" data-y="367" data-op="speed" data-name="Airspeed" data-info="Simulated airspeed indicator. Set a training value, then confirm it for a checklist step."><span class="tag">Airspeed</span><span class="dot"></span></button>
           <button class="hotspot" type="button" data-x="557" data-y="367" data-op="none" data-name="Attitude Indicator" data-info="Compare the miniature aircraft with the horizon bar and cross-check pitch and bank."><span class="tag">Attitude</span><span class="dot"></span></button>
@@ -109,10 +114,11 @@
                   <button id="resetBtn" type="button">Restart</button>
                   <button id="nextBtn" type="button">Show current step ↓</button>
                 </div>
-                <p class="training-note">Abbreviated training sequence only. Use the aircraft POH/AFM checklist and instructor guidance.</p>
+                <p id="profileVerificationNote" class="verification-status" aria-live="polite">Aircraft-specific verification is pending. This is a generic training profile.</p>
+                <footer class="training-note">Abbreviated training sequence only. Use the aircraft POH/AFM checklist and instructor guidance.</footer>
               </div>
             </div>
-            <div id="paperStamp" class="paper-stamp">COMPLETE ✓</div>
+            <div id="paperStamp" class="paper-stamp" role="status" aria-live="polite" aria-atomic="true">COMPLETE ✓</div>
           </div>
         </section>
         <aside id="testPanel" class="test-panel" aria-live="polite" hidden>
@@ -142,16 +148,21 @@
     <h2 id="testResultTitle">Awesome job!</h2>
     <p id="testResultDescription" class="test-result-description">You finished the procedure with zero mistakes.</p>
     <p class="test-result-score">Mistakes <strong id="testResultScore">0 / 3</strong></p>
+    <p id="testSaveStatus" class="test-save-status" role="status" aria-live="polite"></p>
     <div class="test-result-actions">
       <button id="testResultRestart" type="button">Restart test</button>
       <a href="index.html">Home</a>
     </div>
   </dialog>
 
-  <script src="data/procedures.js"></script>
-  <script src="theme.js"></script>
-  <script src="script.js"></script>
-  <script src="chatbot.js"></script>
-  <script src="leave.js"></script>
+  <script src="js/procedures.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/leave.js"></script>
+  <script src="js/auth-ui.js"></script>
 </body>
 </html>
