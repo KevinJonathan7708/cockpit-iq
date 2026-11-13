@@ -44,6 +44,12 @@ body { margin: 0px; overflow: hidden; background-color: var(--page-bg); color: v
 h1, h2, p { margin: 0px; }
 small { color: var(--muted-text); }
 button { font: inherit; color: inherit; }
+a, button, input, select {
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, opacity 180ms ease, transform 180ms ease;
+}
+a:hover { opacity: 0.9; }
+button:not(:disabled):hover { transform: translateY(-1px); }
+input:hover, select:hover { border-color: var(--focus); }
 
 .tabs a, .home-button, .theme-toggle, .board-toggle, .paper-foot button,
 .test-restart, .control-button, .chatbot-question, .chatbot-launcher,
@@ -58,6 +64,15 @@ button:disabled { border-color: var(--border); background-color: var(--disabled-
 
 .kneeboard, .test-panel, .control-panel, .info-toast, .chatbot-panel,
 .profile-note, .home-test, .test-result-dialog { border: 1px solid var(--border); border-radius: 4px; background-color: var(--surface); color: inherit; }
+.kneeboard, .test-panel, .control-panel, .chatbot-panel, .test-result-dialog,
+.activity-row, .home-test, .profile-note, .auth-card, .dash-card, .attempt-record {
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+.kneeboard:hover, .test-panel:hover, .control-panel:hover, .chatbot-panel:hover, .test-result-dialog:hover,
+.activity-row:hover, .home-test:hover, .profile-note:hover, .auth-card:hover, .dash-card:hover, .attempt-record:hover {
+  border-color: var(--focus);
+  transform: translateY(-1px);
+}
 .topbar { position: fixed; top: 0px; right: 0px; left: 0px; z-index: 50; display: flex; align-items: center; gap: 10px; height: 64px; padding: 0px 16px; border-bottom: 1px solid var(--border); background-color: var(--surface); }
 .brand { flex: 1; }
 .brand h1 { font-size: 22px; }
@@ -70,9 +85,10 @@ button:disabled { border-color: var(--border); background-color: var(--disabled-
 .cockpit-frame { position: relative; width: 960px; height: 540px; }
 .cockpit-img { display: block; }
 .hotspot { position: absolute; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 34px; min-height: 34px; padding: 3px; border: 0px; background-color: transparent; cursor: pointer; }
-.hotspot .dot { width: 12px; height: 12px; border: 2px solid #ffffff; border-radius: 6px; background-color: var(--accent-fill); box-shadow: 0 0 0 1px #000000; }
-.hotspot .tag { padding: 3px 7px; border: 1px solid var(--focus); border-radius: 4px; background-color: var(--page-bg); color: var(--text); font-size: 11px; white-space: nowrap; opacity: 0; pointer-events: none; }
-.hotspot:hover .tag, .hotspot:focus .tag, body.show-hotspot-labels .tag, .transponder-spot .tag { opacity: 1; }
+.hotspot .dot { width: 12px; height: 12px; border: 2px solid #ffffff; border-radius: 6px; background-color: var(--accent-fill); box-shadow: 0 0 0 1px #000000; transition: transform 180ms ease; }
+.hotspot .tag { padding: 3px 7px; border: 1px solid var(--focus); border-radius: 4px; background-color: var(--page-bg); color: var(--text); font-size: 11px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 180ms ease, transform 180ms ease; transform: translateY(2px); }
+.hotspot:hover .tag, .hotspot:focus .tag, body.show-hotspot-labels .tag, .transponder-spot .tag { opacity: 1; transform: translateY(0px); }
+.hotspot:hover .dot { transform: scale(1.08); }
 .hotspot.info-only .dot { border-color: var(--accent-fill); background-color: var(--accent-text); }
 .transponder-spot .dot { width: 16px; height: 16px; border-radius: 8px; }
 .marker-kind { margin-left: 4px; font-size: 9px; }
@@ -97,7 +113,11 @@ button:disabled { border-color: var(--border); background-color: var(--disabled-
 .paper-count { text-align: center; }
 .paper-count strong, .sim-readout-cell strong, .test-panel-stats strong { display: block; font-family: monospace; }
 .board-details { display: none; margin-top: 12px; }
-.kneeboard.expanded .board-details { display: block; }
+.kneeboard.expanded .board-details { display: block; animation: checklist-open 220ms ease-out; }
+@keyframes checklist-open {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0px); }
+}
 .paper-kicker, .training-note { color: var(--muted-text); font-size: 12px; }
 .sim-readout { margin: 10px 0px; padding: 8px; border: 1px solid var(--border); }
 .sim-readout-head { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 12px; }
@@ -109,6 +129,8 @@ button:disabled { border-color: var(--border); background-color: var(--disabled-
 .target-chip small { margin-right: 6px; }
 .paper-lines { max-height: 260px; overflow-y: auto; }
 .check-item { display: flex; gap: 10px; padding: 8px 6px; border-bottom: 1px dashed var(--border); border-left: 3px solid transparent; }
+.check-item { transition: background-color 180ms ease; }
+.check-item:hover { background-color: var(--current-step-bg); }
 .check-item.current { border-left-color: var(--focus); background-color: var(--current-step-bg); }
 .check-item.locked { color: var(--muted-text); }
 .check-item.done strong { color: var(--muted-text); text-decoration: line-through; }
@@ -738,6 +760,7 @@ body.page-plain .chatbot-panel {
 }
 .dash-menu a:hover {
   border-color: var(--focus);
+  transform: translateY(-1px);
 }
 .dash-main,
 .dash-side {
@@ -892,5 +915,12 @@ body.page-plain .chatbot-panel {
   body.page-plain .chatbot-panel {
     right: 8px;
     left: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }
